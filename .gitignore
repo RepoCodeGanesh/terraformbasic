@@ -2,4 +2,4 @@ terraform.exe
 .terraform
 .terraform*
 .vs
-main.tfplan
+*.tfplan
