@@ -15,3 +15,12 @@ description = "The client secret for the service principal"
 type = string
 sensitive = true 
 }
+
+variable "tags" {
+description = "A map of tags to assign to the resource group"
+type = map(string) 
+default = {
+Environment = "tag1"
+Dept = "tag2"
+ } 
+}
