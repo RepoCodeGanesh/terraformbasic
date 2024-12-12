@@ -1,5 +1,5 @@
 resource "azurerm_virtual_machine" "vm" {
-  name                  = "vm-${random_pet.rg_name.id}"
+  name                  = "vm-${var.random_pet_name}"
   location              = var.location
   resource_group_name   = var.resource_group_name
   network_interface_ids = [azurerm_network_interface.nic.id]
@@ -14,7 +14,7 @@ resource "azurerm_virtual_machine" "vm" {
   os_profile_windows_config {}
 
   storage_os_disk {
-    name              = "osdisk-${random_pet.rg_name.id}"
+    name              = "osdisk-${var.random_pet_name}"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"
@@ -31,7 +31,7 @@ resource "azurerm_virtual_machine" "vm" {
 }
 
 resource "azurerm_network_interface" "nic" {
-  name                = "nic-${random_pet.rg_name.id}"
+  name                = "nic-${var.random_pet_name}"
   location            = var.location
   resource_group_name = var.resource_group_name
 
@@ -43,14 +43,14 @@ resource "azurerm_network_interface" "nic" {
 }
 
 resource "azurerm_subnet" "subnet" {
-  name                 = "subnet-${random_pet.rg_name.id}"
+  name                 = "subnet-${var.random_pet_name}"
   resource_group_name  = var.resource_group_name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = ["10.0.2.0/24"]
 }
 
 resource "azurerm_virtual_network" "vnet" {
-  name                = "vnet-${random_pet.rg_name.id}"
+  name                = "vnet-${var.random_pet_name}"
   location            = var.location
   resource_group_name = var.resource_group_name
   address_space       = ["10.0.0.0/16"]
