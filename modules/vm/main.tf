@@ -23,7 +23,7 @@ resource "azurerm_virtual_machine" "vm" {
   storage_image_reference {
     publisher = "MicrosoftWindowsServer"
     offer     = "WindowsServer"
-    sku       = var.vm_os
+    sku = "2019-Datacenter-Core"
     version   = "latest"
   }
 
