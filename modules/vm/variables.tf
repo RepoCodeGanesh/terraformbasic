@@ -33,3 +33,8 @@ variable "tags" {
   description = "A map of tags to assign to the resource group"
   type        = map(string)
 }
+
+variable "random_pet_name" {
+  description = "Random pet name"
+  type        = string
+}
