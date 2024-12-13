@@ -1,13 +1,13 @@
 resource "azurerm_virtual_machine" "vm" {
-  name                  = "vm-${var.resource_group_name}"
+  count                 = var.vm_count
+  name                  = "vm-${var.resource_group_name}-${count.index}"
   location              = var.location
   resource_group_name   = var.resource_group_name
-  network_interface_ids = [azurerm_network_interface.nic.id]
+  network_interface_ids = [azurerm_network_interface.nic[count.index].id]
   vm_size               = var.vm_size
-  
 
   os_profile {
-    computer_name  = var.hostname
+    computer_name  = "hostname-${count.index}"
     admin_username = var.admin_username
     admin_password = var.admin_password
   }
@@ -15,7 +15,7 @@ resource "azurerm_virtual_machine" "vm" {
   os_profile_windows_config {}
 
   storage_os_disk {
-    name              = "osdisk-${var.resource_group_name}"
+    name              = "osdisk-${var.resource_group_name}-${count.index}"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"
@@ -24,7 +24,7 @@ resource "azurerm_virtual_machine" "vm" {
   storage_image_reference {
     publisher = "MicrosoftWindowsServer"
     offer     = "WindowsServer"
-    sku = "2019-Datacenter-Core"
+    sku       = "2019-Datacenter-Core"
     version   = "latest"
   }
 
@@ -32,9 +32,10 @@ resource "azurerm_virtual_machine" "vm" {
 }
 
 resource "azurerm_network_interface" "nic" {
-  name                = "nic-${var.resource_group_name}"
-  location            = var.location
-  resource_group_name = var.resource_group_name
+  count                = var.vm_count
+  name                 = "nic-${var.resource_group_name}-${count.index}"
+  location             = var.location
+  resource_group_name  = var.resource_group_name
 
   ip_configuration {
     name                          = "internal"
