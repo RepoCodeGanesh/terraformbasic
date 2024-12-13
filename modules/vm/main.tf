@@ -1,5 +1,5 @@
 resource "azurerm_virtual_machine" "vm" {
-  name                  = "vm-${resource_group_name}"
+  name                  = "vm-${var.resource_group_name}"
   location              = var.location
   resource_group_name   = var.resource_group_name
   network_interface_ids = [azurerm_network_interface.nic.id]
@@ -32,7 +32,7 @@ resource "azurerm_virtual_machine" "vm" {
 }
 
 resource "azurerm_network_interface" "nic" {
-  name                = "nic-${resource_group_name}"
+  name                = "nic-${var.resource_group_name}"
   location            = var.location
   resource_group_name = var.resource_group_name
 
@@ -44,14 +44,14 @@ resource "azurerm_network_interface" "nic" {
 }
 
 resource "azurerm_subnet" "subnet" {
-  name                 = "subnet-${resource_group_name}"
+  name                 = "subnet-${var.resource_group_name}"
   resource_group_name  = var.resource_group_name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = ["10.0.2.0/24"]
 }
 
 resource "azurerm_virtual_network" "vnet" {
-  name                = "vnet-${resource_group_name}"
+  name                = "vnet-${var.resource_group_name}"
   location            = var.location
   resource_group_name = var.resource_group_name
   address_space       = ["10.0.0.0/16"]
