@@ -4,6 +4,12 @@ variable "resource_group_location" {
   description = "Location of the resource group."
 }
 
+variable "resource_group_name" {
+  type        = string
+  default     = "RGDeafult"
+  description = "Location of the resource group."
+}
+
 variable "resource_group_name_prefix" {
   type        = string
   default     = "rg2"
@@ -16,6 +22,15 @@ variable "client_secret" {
   sensitive   = true 
 }
 
+variable "tags" {
+  description = "A map of tags to assign to the resource group"
+  type        = map(string) 
+  default = {
+    Environment = "tag1"
+    Dept        = "tag2"
+  } 
+}
+
 variable "admin_username" {
   description = "Admin username for the VM"
   type        = string
@@ -25,13 +40,4 @@ variable "admin_password" {
   description = "Admin password for the VM"
   type        = string
   sensitive   = false
-}
-
-variable "tags" {
-  description = "A map of tags to assign to the resource group"
-  type        = map(string) 
-  default = {
-    Environment = "tag1"
-    Dept        = "tag2"
-  } 
 }
