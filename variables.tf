@@ -41,3 +41,12 @@ variable "admin_password" {
   type        = string
   sensitive   = false
 }
+variable "vm_size" {
+  description = "Size of the VM"
+  type        = string
+}
+
+variable "vm_os" {
+  description = "OS version for the VM"
+  type        = string
+}

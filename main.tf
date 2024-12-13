@@ -12,8 +12,8 @@ module "vm" {
   source                = "./modules/vm"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = var.resource_group_location
-  vm_size               = "Standard_B1ls"
-  vm_os                 = "Windows2019DatacenterCore"
+  vm_size               = var.vm_size
+  vm_os                 = var.vm_os
   admin_username        = var.admin_username
   admin_password        = var.admin_password
   tags                  = var.tags
