@@ -8,6 +8,12 @@ variable "location" {
   type        = string
 }
 
+variable "vm_count" {
+  description = "Number of VMs to create"
+  type        = number
+  default     = 1
+}
+
 variable "vm_size" {
   description = "Size of the VM"
   type        = string
