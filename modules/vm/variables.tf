@@ -11,7 +11,7 @@ variable "location" {
 variable "vm_count" {
   description = "Number of VMs to create"
   type        = number
-  default     = 1
+  default     = 2
 }
 
 variable "vm_size" {
