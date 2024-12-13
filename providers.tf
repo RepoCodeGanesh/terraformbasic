@@ -27,4 +27,4 @@ provider "azurerm" {
   client_id       = "1ce6cbf4-1110-4ec8-b98d-80088bde1942"
   client_secret   = var.client_secret
 }
-}
+
