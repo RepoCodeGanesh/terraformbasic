@@ -50,3 +50,8 @@ variable "vm_os" {
   description = "OS version for the VM"
   type        = string
 }
+
+variable "hostname" {
+  description = "name for vm"
+  type = string
+}
