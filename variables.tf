@@ -13,7 +13,7 @@ variable "resource_group_name" {
 variable "vm_count" {
   description = "Number of VMs to create"
   type        = number
-  default     = 1
+  default     = 2
 }
 
 variable "resource_group_name_prefix" {
