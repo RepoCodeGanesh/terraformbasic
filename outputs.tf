@@ -3,11 +3,15 @@ output "resource_group_name" {
 }
 
 output "Vm_Name" {
-  value = module.vm.Vm_Name
+  value = module.vm.vm_names
+}
+
+output "Vm_Name" {
+  value = module.vm.vm_ids
 }
 
 output "VmIP" {
-  value = module.vm.vm_private_ip
+  value = module.vm.vm_private_ips
 }
 
 output "vm_admin_username" {
