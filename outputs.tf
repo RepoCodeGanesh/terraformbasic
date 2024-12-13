@@ -9,3 +9,7 @@ output "Vm_Name" {
 output "VmIP" {
   value = module.vm.vm_private_ip
 }
+
+output "vm_username"{
+  value = module.vm.Vm_password
+}

@@ -1,5 +1,4 @@
 resource_group_location      = "centralindia"
-resource_group_name_prefix   = "Google"
 resource_group_name          = "Gmail"
 admin_username               = "adminuser"
 admin_password               = "AdminPassword123!"
