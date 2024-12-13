@@ -6,7 +6,7 @@ output "Vm_Name" {
   value = module.vm.vm_names
 }
 
-output "Vm_Name" {
+output "vm_ids" {
   value = module.vm.vm_ids
 }
 
