@@ -2,9 +2,6 @@ output "Vm_Name" {
   value = azurerm_virtual_machine.vm.name
 }
 
-output "Vm_password" {
-  value = azurerm_virtual_machine.vm.admin_username
-}
 
 output "vm_private_ip" {
   description = "The private IP address of the VM"
