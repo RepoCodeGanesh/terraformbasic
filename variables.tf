@@ -10,6 +10,12 @@ variable "resource_group_name" {
   description = "Location of the resource group."
 }
 
+variable "vm_count" {
+  description = "Number of VMs to create"
+  type        = number
+  default     = 1
+}
+
 variable "resource_group_name_prefix" {
   type        = string
   default     = "rg2"
