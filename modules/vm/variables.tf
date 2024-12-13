@@ -34,10 +34,6 @@ variable "tags" {
   type        = map(string)
 }
 
-variable "random_pet_name" {
-  description = "Random pet name"
-  type        = string
-}
 
 variable "admin_username" {
   description = "Admin username for the VM"
