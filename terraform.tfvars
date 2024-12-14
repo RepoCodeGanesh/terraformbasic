@@ -1,4 +1,4 @@
-resource_group_location      = "centralindia"
+resource_group_location      = "westus2"
 resource_group_name          = "Gmail"
 admin_username               = "adminuser"
 admin_password               = "AdminPassword123!"
