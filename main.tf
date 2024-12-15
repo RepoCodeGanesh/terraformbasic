@@ -8,7 +8,7 @@ resource "azurerm_resource_group" "rg" {
   tags     = var.tags
 }
 
-module "vm" {
+module "vm1" {
   source                = "./modules/vm"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = var.resource_group_location
@@ -20,7 +20,7 @@ module "vm" {
   tags                  = var.tags
 }
 
-module "vm" {
+module "vm2" {
   source                = "./modules/vm"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = var.resource_group_location
