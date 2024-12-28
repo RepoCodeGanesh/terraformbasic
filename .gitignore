@@ -3,3 +3,5 @@ terraform.exe
 .terraform*
 .vs
 *.tfplan
+terraform.tfstate
+terraform.tfstate.backup
