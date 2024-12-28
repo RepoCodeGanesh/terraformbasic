@@ -6,6 +6,7 @@ vm_size               = "Standard_B1ls"
 vm_os                 = "Windows2019DatacenterCore"
 hostname              = "VM"
 vm_count              = 4
+
 tags = {
   Environment = "dev"
   Dept        = "financial"

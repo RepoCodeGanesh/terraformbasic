@@ -20,3 +20,9 @@ module "vm" {
   admin_password        = var.admin_password
   tags                  = var.tags
 }
+
+module "network" {
+  source                  = "./modules/network"
+  resource_group_name     = var.resource_group_name
+  location                = var.resource_group_location 
+}
