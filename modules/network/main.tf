@@ -1,7 +1,7 @@
 resource "azurerm_virtual_network" "vnet" {
   count               = length(var.address_space_name)
   resource_group_name   = var.resource_group_name
-  location            = var.resource_group_location
+  location            = var.location
   name                = var.address_space_name[count.index]
   address_space       = var.address_spaces[count.index]
 }
