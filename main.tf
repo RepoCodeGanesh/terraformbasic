@@ -8,6 +8,8 @@ resource "azurerm_resource_group" "rg" {
   tags     = var.tags
 }
 
+address_space_name = ["Vnet1", "Vnet2"]
+
 module "vm" {
   source                = "./modules/vm"
   resource_group_name   = azurerm_resource_group.rg.name
@@ -19,4 +21,12 @@ module "vm" {
   admin_username        = var.admin_username
   admin_password        = var.admin_password
   tags                  = var.tags
+}
+
+module "network" {
+  source                = "./modules/network"
+  address_space_name = ["Vnet1", "Vnet2"]
+  resource_group_name   = azurerm_resource_group.rg.name
+  location              = var.resource_group_location
+  tags     = var.tags
 }
