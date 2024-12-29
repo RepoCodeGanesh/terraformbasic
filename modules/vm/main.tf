@@ -1,7 +1,20 @@
+resource "azurerm_network_interface" "nic" {
+  count                = var.vm_count
+  name                 = "nic-${var.resource_group_name}-${count.index}"
+  location             = var.resource_group_location
+  resource_group_name  = var.resource_group_name
+
+  ip_configuration {
+    name                          = "internal"
+    subnet_id                     = var.subnet_ids[count.index]  # Use the passed subnet IDs
+    private_ip_address_allocation = "Dynamic"
+  }
+}
+
 resource "azurerm_virtual_machine" "vm" {
   count                 = var.vm_count
   name                  = "vm-${var.resource_group_name}-${count.index}"
-  location              = var.location
+  location              = var.resource_group_location
   resource_group_name   = var.resource_group_name
   network_interface_ids = [azurerm_network_interface.nic[count.index].id]
   vm_size               = var.vm_size
@@ -29,17 +42,4 @@ resource "azurerm_virtual_machine" "vm" {
   }
 
   tags = var.tags
-}
-
-resource "azurerm_network_interface" "nic" {
-  count                = var.vm_count
-  name                 = "nic-${var.resource_group_name}-${count.index}"
-  location             = var.location
-  resource_group_name  = var.resource_group_name
-
-  ip_configuration {
-    name                          = "internal"
-    subnet_id                     = var.subnet_ids[count.index] # Use the passed subnet IDs
-    private_ip_address_allocation = "Dynamic"
-  }
 }
