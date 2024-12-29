@@ -3,10 +3,8 @@
 # }
 
 resource "azurerm_resource_group" "rg" {
-  location              = var.resource_group_location
-  name                  = var.resource_group_name
-  vnet_address_spaces   = var.vnet_address_spaces
-  subnet_prefixes       = var.subnet_prefixes
+  location = var.resource_group_location
+  name     = var.resource_group_name
   tags     = var.tags
 }
 
