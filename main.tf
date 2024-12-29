@@ -18,6 +18,9 @@ module "vm" {
   source                  = "./modules/vm"
   resource_group_name     = azurerm_resource_group.rg.name
   resource_group_location = var.resource_group_location
+  location              = var.resource_group_location
+  vm_os                 = var.vm_os
+  hostname              = var.hostname
   vm_count                = var.vm_count
   vm_size                 = var.vm_size
   admin_username          = var.admin_username
