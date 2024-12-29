@@ -24,3 +24,7 @@ description = "The admin password for the VM"
     value = var.admin_password
     sensitive = true 
 }
+
+output "subnet_ids" {
+  value = azurerm_subnet.subnet[*].id
+}
