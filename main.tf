@@ -26,6 +26,7 @@ module "vm" {
   vm_size               = var.vm_size
   vm_os                 = var.vm_os
   vm_count              = var.vm_count
+  subnet_id             = module.network.subnet_ids[count.index]
   admin_username        = var.admin_username
   admin_password        = var.admin_password
   tags                  = var.tags
