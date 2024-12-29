@@ -7,8 +7,7 @@ resource "azurerm_resource_group" "rg" {
 module "network" {
   source                  = "./modules/network"
   resource_group_name     = var.resource_group_name
-  resource_group_location = var.resource_group_location
-  location                = resource_group_location
+  location                = var.resource_group_location
   depends_on = [azurerm_resource_group.rg]
 }
 
