@@ -10,6 +10,5 @@ resource "azurerm_subnet" "subnet" {
   count                = length(var.subnet_names)
   resource_group_name  = var.resource_group_name
   name                 = var.subnet_names[count.index]
-  virtual_network_name = azurerm_virtual_network.vnet[count.index / 2].name  # Divide by 2 to match subnets with VNets
-  address_prefixes     = [var.subnet_prefixes[count.index]]
+  virtual_network_name = azurerm_virtual_network.vnet[count.index // 2].name
 }
