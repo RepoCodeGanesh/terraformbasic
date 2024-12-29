@@ -1,15 +1,15 @@
 resource "azurerm_virtual_network" "vnet" {
-  count               = length(var.address_space_name)
+  count             = 2
+  name              = "vnet${count.index + 1}"
+  address_space     = ["10.${count.index + 1}.0.0/16"]
+  location          = var.location
   resource_group_name = var.resource_group_name
-  location            = var.resource_group_location
-  name                = var.address_space_name[count.index]
-  address_space       = [var.address_spaces[count.index]]
 }
 
 resource "azurerm_subnet" "subnet" {
-  count                = length(var.subnet_names)
+  count                = 4
+  name                 = "${element(["VM", "DB"], count.index % 2)}-subnet${count.index / 2 + 1}"
   resource_group_name  = var.resource_group_name
-  name                 = var.subnet_names[count.index]
-  virtual_network_name = azurerm_virtual_network.vnet[floor(count.index / 2)].name  # Use floor() for integer indexing
-  address_prefixes     = [var.subnet_prefixes[count.index]]
+  virtual_network_name = element(azurerm_virtual_network.vnet.*.name, count.index / 2)
+  address_prefixes     = ["10.${count.index / 2 + 1}.${count.index % 2 * 64}.0/18"]
 }
