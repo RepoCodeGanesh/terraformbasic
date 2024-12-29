@@ -46,6 +46,6 @@ variable "hostname" {
 }
 
 variable "subnet_ids" {
-description = "The subnet IDs for the network interfaces" 
-type = list(string) 
+  description = "The subnet IDs for the network interfaces"
+  type        = list(string)
 }
