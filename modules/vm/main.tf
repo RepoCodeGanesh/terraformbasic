@@ -39,7 +39,7 @@ resource "azurerm_network_interface" "nic" {
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = var.subnet_id
+    subnet_id                     = modules.network.subnet_ids[count.index]
     private_ip_address_allocation = "Dynamic"
   }
 }
