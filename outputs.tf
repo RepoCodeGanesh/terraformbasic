@@ -25,6 +25,6 @@
 #     sensitive = true 
 # }
 
-output "subnet_ids" {
-  value = azurerm_subnet.subnet[*].id
-}
+# output "subnet_ids" {
+#   value = azurerm_subnet.subnet[*].id
+# }
