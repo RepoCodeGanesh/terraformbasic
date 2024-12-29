@@ -22,12 +22,6 @@ variable "subnet_names" {
   default     = ["subnet1", "subnet2", "subnet3"]
 }
 
-variable "resource_group_name" {
-  type        = string
-  default     = "RGDeafult"
-  description = "Location of the resource group."
-}
-
 variable "location" {
   type        = string
   default     = "eastus"
