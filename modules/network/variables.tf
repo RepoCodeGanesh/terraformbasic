@@ -7,5 +7,14 @@ variable "location" {
 variable "resource_group_name" {
   description = "The name of the resource group"
   type        = string
-  default     = "my-resource-group"
+}
+
+variable "vnet_address_spaces" {
+  description = "List of VNet address spaces"
+  type        = list(string)
+}
+
+variable "subnet_prefixes" {
+  description = "List of subnet prefixes"
+  type        = list(string)
 }
