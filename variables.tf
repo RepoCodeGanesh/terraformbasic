@@ -86,6 +86,11 @@ variable "subnet_names" {
   default     = ["subnet1", "subnet2", "subnet3"]
 }
 
+variable "subnet_ids" {
+  description = "The subnet IDs for the network interfaces"
+  type        = list(string)
+}
+
 variable "location" {
   type        = string
   default     = "eastus"
