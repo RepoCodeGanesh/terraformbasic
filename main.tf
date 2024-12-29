@@ -8,6 +8,16 @@ resource "azurerm_resource_group" "rg" {
   tags     = var.tags
 }
 
+module "network" {
+  source                  = "./modules/network"
+  resource_group_name     = var.resource_group_name
+  location                = var.resource_group_location
+  address_space_name      = var.address_space_name
+  address_spaces          = var.address_spaces
+  subnet_names            = var.subnet_names
+  subnet_prefixes         = var.subnet_prefixes
+}
+
 module "vm" {
   source                = "./modules/vm"
   resource_group_name   = azurerm_resource_group.rg.name
@@ -19,15 +29,5 @@ module "vm" {
   admin_username        = var.admin_username
   admin_password        = var.admin_password
   tags                  = var.tags
-}
-
-module "network" {
-  source                  = "./modules/network"
-  resource_group_name     = var.resource_group_name
-  location                = var.resource_group_location
-  address_space_name      = var.address_space_name
-  address_spaces          = var.address_spaces
-  subnet_names            = var.subnet_names
-  subnet_prefixes         = var.subnet_prefixes
 }
 
