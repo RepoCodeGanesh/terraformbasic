@@ -3,6 +3,13 @@ variable "resource_group_name" {
   default     = "RGDeafult"
   description = "Location of the resource group."
 }
+
+variable "resource_group_location" {
+  type        = string
+  default     = "eastus"
+  description = "Location of the resource group."
+}
+
 variable "address_spaces" {
   description = "The address spaces for the virtual network"
   type        = list(string)
