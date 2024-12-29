@@ -1,3 +1,8 @@
+variable "resource_group_name" {
+  type        = string
+  default     = "RGDeafult"
+  description = "Location of the resource group."
+}
 variable "address_spaces" {
   description = "The address spaces for the virtual network"
   type        = list(string)
