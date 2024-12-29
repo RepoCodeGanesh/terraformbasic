@@ -8,6 +8,9 @@ module "network" {
   source                  = "./modules/network"
   resource_group_name     = var.resource_group_name
   location                = var.resource_group_location
+  vnet_address_spaces     = var.vnet_address_spaces
+  subnet_prefixes         = var.subnet_prefixes
+
   depends_on = [azurerm_resource_group.rg]
 }
 
