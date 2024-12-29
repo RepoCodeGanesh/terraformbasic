@@ -17,9 +17,3 @@ output "vm_private_ips" {
   description = "The private IP addresses of all created VMs"
   value       = [for idx in range(length(azurerm_network_interface.nic)) : azurerm_network_interface.nic[idx].ip_configuration[0].private_ip_address]
 }
-
-variable "resource_group_name" {
-  type        = string
-  default     = "RGDeafult"
-  description = "Location of the resource group."
-}
