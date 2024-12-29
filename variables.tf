@@ -68,12 +68,12 @@ variable "location" {
   description = "Location of the resource group."
 } 
 
-variable "vnet_address_spaces" {
-  description = "List of VNet address spaces"
-  type        = list(string)
-}
+# variable "vnet_address_spaces" {
+#   description = "List of VNet address spaces"
+#   type        = list(string)
+# }
 
-variable "subnet_prefixes" {
-  description = "List of subnet prefixes"
-  type        = list(string)
-}
+# variable "subnet_prefixes" {
+#   description = "List of subnet prefixes"
+#   type        = list(string)
+# }
