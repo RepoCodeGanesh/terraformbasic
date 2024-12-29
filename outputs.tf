@@ -22,3 +22,7 @@ output "subnet_ids" {
   description = "The IDs of the subnets"
   value       = module.network.subnet_ids
 }
+output "vm_subnet1_id" 
+  description = "The ID of the VM-subnet1"
+  value = module.network.vm_subnet1_id
+}
