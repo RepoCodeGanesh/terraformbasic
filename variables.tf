@@ -89,6 +89,7 @@ variable "subnet_names" {
 variable "subnet_ids" {
   description = "The subnet IDs for the network interfaces"
   type        = list(string)
+  default = ["subnet-12345678", "subnet-87654321"]
 }
 
 variable "location" {
