@@ -15,7 +15,7 @@ module "network" {
   address_space_name      = var.address_space_name
   address_spaces          = var.address_spaces
   subnet_names            = var.subnet_names
-  subnet_prefixes         = var.subnet_prefixes
+  subnet_ids = module.network.subnet_ids # Pass the output from the network module
 }
 
 module "vm" {
