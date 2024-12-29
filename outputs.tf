@@ -1,9 +1,9 @@
 output "vnet_ids" {
   description = "The IDs of the VNets"
-  value       = azurerm_virtual_network.vnet.*.id
+  value       = module.network.vnet_ids
 }
 
 output "subnet_ids" {
   description = "The IDs of the subnets"
-  value       = azurerm_subnet.subnet.*.id
+  value       = module.network.subnet_ids
 }
