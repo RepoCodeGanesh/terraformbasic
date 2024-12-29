@@ -25,6 +25,7 @@ module "vm" {
   vm_size                 = var.vm_size
   admin_username          = var.admin_username
   admin_password          = var.admin_password
+  vnet_id = element(module.network.vnet_ids, 0)
   subnet_ids              = module.network.subnet_ids  # Pass the output from the network module
   tags                    = var.tags
 }
