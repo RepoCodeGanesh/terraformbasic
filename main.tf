@@ -24,5 +24,10 @@ module "vm" {
 module "network" {
   source                  = "./modules/network"
   resource_group_name     = var.resource_group_name
-  location                = var.resource_group_location 
+  location                = var.resource_group_location
+  address_space_name      = var.address_space_name
+  address_spaces          = var.address_spaces
+  subnet_names            = var.subnet_names
+  subnet_prefixes         = var.subnet_prefixes
 }
+

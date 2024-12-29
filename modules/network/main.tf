@@ -11,5 +11,5 @@ resource "azurerm_subnet" "subnet" {
   resource_group_name   = var.resource_group_name
   name                 = var.subnet_names[count.index]
   virtual_network_name = azurerm_virtual_network.vnet[count.index].name
-  address_prefixes       = var.subnet_prefixes[count.index]
+  address_prefix       = var.subnet_prefixes[count.index]
 }
