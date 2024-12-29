@@ -12,6 +12,7 @@ module "network" {
   address_spaces          = var.address_spaces
   subnet_names            = var.subnet_names
   subnet_prefixes         = var.subnet_prefixes
+  depends_on = [azurerm_resource_group.rg]
 }
 
 # module "vm" {
