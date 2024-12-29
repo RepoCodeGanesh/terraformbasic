@@ -55,3 +55,7 @@ variable "subnet_ids" {
   description = "The subnet IDs for the network interfaces"
   type        = list(string)
 }
+variable "vm_subnet_id"{ # Changed from subnet_ids to vm_subnet_id 
+  description = "The ID of the subnet for the VM NICs"
+  type = string
+}
