@@ -3,7 +3,7 @@ resource "azurerm_virtual_network" "vnet" {
   resource_group_name = var.resource_group_name
   location            = var.resource_group_location
   name                = var.address_space_name[count.index]
-  address_space       = [var.address_spaces[count.index]]
+  address_space       = [var.address_spaces[count.index]]  # Wrap in square brackets to match type
 }
 
 resource "azurerm_subnet" "subnet" {
@@ -11,5 +11,5 @@ resource "azurerm_subnet" "subnet" {
   resource_group_name  = var.resource_group_name
   name                 = var.subnet_names[count.index]
   virtual_network_name = azurerm_virtual_network.vnet[count.index].name
-  address_prefix       = var.subnet_prefixes[count.index]
+  address_prefixes     = [var.subnet_prefixes[count.index]]  # Wrap in square brackets to match type
 }
