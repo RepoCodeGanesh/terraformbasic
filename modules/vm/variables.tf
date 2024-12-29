@@ -44,3 +44,8 @@ variable "hostname" {
   description = "name for vm"
   type = string
 }
+
+variable "subnet_ids" {
+description = "The subnet IDs for the network interfaces" 
+type = list(string) 
+}
