@@ -43,5 +43,4 @@ resource "azurerm_virtual_machine" "vm" {
   }
 
   tags = var.tags
-  depends_on = [module.network] # Explicitly depend on the network module
 }
