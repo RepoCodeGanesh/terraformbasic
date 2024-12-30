@@ -1,6 +1,6 @@
 resource "azurerm_network_interface" "nic" {
   count                = var.vm_count
-  name                 = "nic-${var.resource_group_name}-${count.index}"
+  name                 = "nic-${var.resource_group_name}-${count.index+1}"
   location             = var.resource_group_location
   resource_group_name  = var.resource_group_name
 
@@ -14,14 +14,14 @@ resource "azurerm_network_interface" "nic" {
 
 resource "azurerm_virtual_machine" "vm" {
   count                 = var.vm_count
-  name                  = "vm-${var.resource_group_name}-${count.index}"
+  name                  = "vm-${var.resource_group_name}-${count.index+1}"
   location              = var.resource_group_location
   resource_group_name   = var.resource_group_name
   network_interface_ids = [azurerm_network_interface.nic[count.index].id]
   vm_size               = var.vm_size
 
   os_profile {
-    computer_name  = "hostname-${count.index}"
+    computer_name  = "hostname-${count.index+1}"
     admin_username = var.admin_username
     admin_password = var.admin_password
   }
@@ -29,7 +29,7 @@ resource "azurerm_virtual_machine" "vm" {
   os_profile_windows_config {}
 
   storage_os_disk {
-    name              = "osdisk-${var.resource_group_name}-${count.index}"
+    name              = "osdisk-${var.resource_group_name}-${count.index+1}"
     caching           = "ReadWrite"
     create_option     = "FromImage"
     managed_disk_type = "Standard_LRS"
