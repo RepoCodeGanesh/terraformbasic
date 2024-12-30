@@ -26,5 +26,6 @@ module "vm" {
   admin_username          = var.admin_username
   admin_password          = var.admin_password
   subnet_id               = module.network.vm_subnet1_id  # Pass the output from the network module
+  # subnet_ids = module.network.subnet_ids # Pass the output from the network module
   tags                    = var.tags
 }
