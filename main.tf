@@ -25,8 +25,8 @@ module "vm" {
   vm_size                 = var.vm_size
   admin_username          = var.admin_username
   admin_password          = var.admin_password
-  vm_subnet_id            = module.network.vm_subnet1_id  # Pass the output from the network module
-  # subnet_ids = module.network.subnet_ids # Pass the output from the network module
+  #vm_subnet_id            = module.network.vm_subnet1_id  # Pass the output from the network module
+  subnet_ids = module.network.subnet_ids # Pass the output from the network module
   tags                    = var.tags
   depends_on = [module.network.azurerm_subnet.subnet]
 }
