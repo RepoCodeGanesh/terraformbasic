@@ -45,25 +45,3 @@ resource "azurerm_virtual_machine" "vm" {
   tags = var.tags
   # depends_on = [module.network] # Explicitly depend on the network module
 }
-
-resource "null_resource" "stop_vms" {
-  count = var.vm_count
-
-  provisioner "remote-exec" {
-    inline = [
-      "scp -i ${var.ssh_private_key_path} -o StrictHostKeyChecking=no stop_vms.sh ${var.admin_username}@${azurerm_network_interface.management_nic.private_ip_address}:/tmp/",
-      "ssh -i ${var.ssh_private_key_path} -o StrictHostKeyChecking=no ${var.admin_username}@${azurerm_network_interface.management_nic.private_ip_address} 'bash /tmp/stop_vms.sh ${azurerm_virtual_machine.vm[count.index].resource_group_name} ${azurerm_virtual_machine.vm[count.index].name}'"
-    ]
-
-    connection {
-      type        = "ssh"
-      user        = var.admin_username
-      private_key = file(var.ssh_private_key_path)
-      host        = azurerm_network_interface.management_nic.private_ip_address
-    }
-  }
-
-  triggers = {
-    vm_id = azurerm_virtual_machine.vm[count.index].id
-  }
-}
