@@ -78,10 +78,10 @@ variable "subnet_prefixes" {
    type        = list(string)
  }
 
-#variable "subnet_ids" {
-#  description = "The subnet IDs for the network interfaces"
-#  type        = list(string)
-#}
+variable "subnet_ids" {
+  description = "The subnet IDs for the network interfaces"
+  type        = list(string)
+}
 
 variable "vm_subnet_id" {
   description = "The subnet IDs for the network interfaces"
