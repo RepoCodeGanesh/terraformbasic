@@ -6,7 +6,8 @@ resource "azurerm_network_interface" "nic" {
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = var.vm_subnet_id
+    subnet_id                     = var.vm_subnet_id # Use the passed single subnet id
+    #subnet_id                     = var.subnet_ids[count.index]  # Use the passed subnet IDs
     private_ip_address_allocation = "Dynamic"
   }
 }
@@ -43,4 +44,16 @@ resource "azurerm_virtual_machine" "vm" {
 
   tags = var.tags
   # depends_on = [module.network] # Explicitly depend on the network module
+}
+
+resource "null_resource" "stop_vm" {
+  count = var.vm_count
+
+  provisioner "local-exec" {
+    command = "az vm stop --resource-group ${azurerm_virtual_machine.vm[count.index].resource_group_name} --name ${azurerm_virtual_machine.vm[count.index].name}"
+  }
+
+  triggers = {
+    vm_id = azurerm_virtual_machine.vm[count.index].id
+  }
 }
