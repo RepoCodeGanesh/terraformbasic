@@ -85,5 +85,5 @@ variable "subnet_prefixes" {
 
 variable "vm_subnet_id" {
   description = "The subnet IDs for the network interfaces"
-  type        = list(string)
+  type        = string
 }
