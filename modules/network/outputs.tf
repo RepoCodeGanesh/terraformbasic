@@ -10,6 +10,6 @@ output "subnet_ids" {
 
 output "vm_subnet1_id" {
   description = "The ID of the subnet VM-subnet1"
-  value       = element(azurerm_subnet.subnet.*.id, 0)  # Assuming VM-subnet1 is the first subnet
+  value       = element(azurerm_subnet.subnet.*.id, 3)  # Assuming VM-subnet1 is the first subnet
 }
 
