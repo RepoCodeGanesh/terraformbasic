@@ -1,3 +1,9 @@
+variable "client_secret" { 
+  description = "The client secret for the service principal"
+  type        = string
+  sensitive   = true 
+}
+
 variable "location" {
   description = "The Azure region to deploy resources"
   type        = string
